@@ -1,0 +1,374 @@
+{
+  "allowedMcpServers": [
+    {
+      "serverName": "atlassian",
+      "url": "https://mcp.atlassian.com/v1/sse"
+    },
+    {
+      "serverName": "azure-mcp"
+    },
+    {
+      "serverName": "microsoft-foundry-mcp-remote"
+    },
+    {
+      "serverName": "azure-dev-ops-mcp"
+    },
+    {
+      "serverName": "aks-mcp"
+    },
+    {
+      "serverName": "github-mcp"
+    },
+    {
+      "serverName": "awesome-copilot-mcp"
+    },
+    {
+      "serverName": "markitdown-mcp"
+    },
+    {
+      "serverName": "m365-agents-toolkit-mcp"
+    },
+    {
+      "serverName": "clarity-mcp"
+    },
+    {
+      "serverName": "dataverse-mcp"
+    },
+    {
+      "serverName": "devbox-mcp"
+    },
+    {
+      "serverName": "fabric-mcp"
+    },
+    {
+      "serverName": "ms-fabric-rti"
+    },
+    {
+      "serverName": "microsoft-docs-mcp"
+    },
+    {
+      "serverName": "microsoft-sentinel-data-exploration"
+    },
+    {
+      "serverName": "mssql-mcp"
+    },
+    {
+      "serverName": "nuget-mcp"
+    },
+    {
+      "serverName": "playwright"
+    },
+    {
+      "serverName": "wassette"
+    },
+    {
+      "serverName": "dockerhub"
+    },
+    {
+      "serverName": "fetch"
+    },
+    {
+      "serverName": "figma"
+    },
+    {
+      "serverName": "grafana"
+    },
+    {
+      "serverName": "terraform"
+    },
+    {
+      "serverName": "sentry",
+      "url": "https://mcp.sentry.dev/mcp"
+    },
+    {
+      "serverName": "splunk"
+    },
+    {
+      "serverName": "wiz"
+    },
+    {
+      "serverName": "jfrog"
+    },
+    {
+      "serverName": "amazon-bedrock-agentcore-mcp-server"
+    },
+    {
+      "serverName": "amazon-kendra-index-mcp-server"
+    },
+    {
+      "serverName": "amazon-keyspaces-mcp-server"
+    },
+    {
+      "serverName": "amazon-mq-mcp-server"
+    },
+    {
+      "serverName": "amazon-neptune-mcp-server"
+    },
+    {
+      "serverName": "amazon-qbusiness-anonymous-mcp-server"
+    },
+    {
+      "serverName": "amazon-qindex-mcp-server"
+    },
+    {
+      "serverName": "amazon-sns-sqs-mcp-server"
+    },
+    {
+      "serverName": "aurora-dsql-mcp-server"
+    },
+    {
+      "serverName": "aws-api-mcp-server"
+    },
+    {
+      "serverName": "aws-appsync-mcp-server"
+    },
+    {
+      "serverName": "aws-bedrock-custom-model-import-mcp-server"
+    },
+    {
+      "serverName": "aws-bedrock-data-automation-mcp-server"
+    },
+    {
+      "serverName": "aws-dataprocessing-mcp-server"
+    },
+    {
+      "serverName": "aws-diagram-mcp-server"
+    },
+    {
+      "serverName": "aws-documentation-mcp-server"
+    },
+    {
+      "serverName": "aws-healthomics-mcp-server"
+    },
+    {
+      "serverName": "aws-iac-mcp-server"
+    },
+    {
+      "serverName": "aws-iot-sitewise-mcp-server"
+    },
+    {
+      "serverName": "aws-knowledge-mcp-server"
+    },
+    {
+      "serverName": "aws-location-mcp-server"
+    },
+    {
+      "serverName": "aws-msk-mcp-server"
+    },
+    {
+      "serverName": "aws-network-mcp-server"
+    },
+    {
+      "serverName": "aws-pricing-mcp-server"
+    },
+    {
+      "serverName": "aws-serverless-mcp-server"
+    },
+    {
+      "serverName": "aws-support-mcp-server"
+    },
+    {
+      "serverName": "bedrock-kb-retrieval-mcp-server"
+    },
+    {
+      "serverName": "billing-cost-management-mcp-server"
+    },
+    {
+      "serverName": "ccapi-mcp-server"
+    },
+    {
+      "serverName": "cdk-mcp-server"
+    },
+    {
+      "serverName": "cfn-mcp-server"
+    },
+    {
+      "serverName": "cloudtrail-mcp-server"
+    },
+    {
+      "serverName": "cloudwatch-applicationsignals-mcp-server"
+    },
+    {
+      "serverName": "cloudwatch-appsignals-mcp-server"
+    },
+    {
+      "serverName": "cloudwatch-mcp-server"
+    },
+    {
+      "serverName": "code-doc-gen-mcp-server"
+    },
+    {
+      "serverName": "core-mcp-server"
+    },
+    {
+      "serverName": "cost-explorer-mcp-server"
+    },
+    {
+      "serverName": "documentdb-mcp-server"
+    },
+    {
+      "serverName": "document-loader-mcp-server"
+    },
+    {
+      "serverName": "dynamodb-mcp-server"
+    },
+    {
+      "serverName": "ecs-mcp-server"
+    },
+    {
+      "serverName": "eks-mcp-server"
+    },
+    {
+      "serverName": "elasticache-mcp-server"
+    },
+    {
+      "serverName": "finch-mcp-server"
+    },
+    {
+      "serverName": "frontend-mcp-server"
+    },
+    {
+      "serverName": "git-repo-research-mcp-server"
+    },
+    {
+      "serverName": "healthimaging-mcp-server"
+    },
+    {
+      "serverName": "healthlake-mcp-server"
+    },
+    {
+      "serverName": "iam-mcp-server"
+    },
+    {
+      "serverName": "lambda-tool-mcp-server"
+    },
+    {
+      "serverName": "mcp-lambda-handler"
+    },
+    {
+      "serverName": "memcached-mcp-server"
+    },
+    {
+      "serverName": "mysql-mcp-server"
+    },
+    {
+      "serverName": "nova-canvas-mcp-server"
+    },
+    {
+      "serverName": "openapi-mcp-server"
+    },
+    {
+      "serverName": "postgres-mcp-server"
+    },
+    {
+      "serverName": "prometheus-mcp-server"
+    },
+    {
+      "serverName": "redshift-mcp-server"
+    },
+    {
+      "serverName": "s3-tables-mcp-server"
+    },
+    {
+      "serverName": "sagemaker-ai-mcp-server"
+    },
+    {
+      "serverName": "sagemaker-unified-studio-spark-troubleshooting-mcp-server"
+    },
+    {
+      "serverName": "sagemaker-unified-studio-spark-upgrade-mcp-server"
+    },
+    {
+      "serverName": "stepfunctions-tool-mcp-server"
+    },
+    {
+      "serverName": "syntheticdata-mcp-server"
+    },
+    {
+      "serverName": "terraform-mcp-server"
+    },
+    {
+      "serverName": "timestream-for-influxdb-mcp-server"
+    },
+    {
+      "serverName": "valkey-mcp-server"
+    },
+    {
+      "serverName": "well-architected-security-mcp-server"
+    }
+  ],
+  "allowManagedHooksOnly": true,
+  "allowManagedPermissionRulesOnly": true,
+  "permissions": {
+    "deny": [
+      "Read(**/.*env*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/*.p12)",
+      "Read(**/*.pfx)",
+      "Read(**/*_rsa)",
+      "Read(**/*_dsa)",
+      "Read(**/*_ed25519)",
+      "Read(~/.ssh/*)",
+      "Read(~/.aws/*)",
+      "Read(~/.kube/*)",
+      "Read(~/.azure/*)",
+      "Read(~/.config/gcloud/*)",
+      "Read(/etc/*)",
+      "Read(/var/*)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(nc *)",
+      "Bash(telnet *)",
+      "Bash(nmap *)",
+      "Bash(security *)",
+      "Bash(ssh *)",
+      "Bash(scp *)",
+      "Bash(ftp *)"
+    ],
+    "defaultMode": "default"
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "filesystem": {
+      "read": {
+        "denyOnly": [
+          "**/.ssh",
+          "**/.ssh/*",
+          "**/.env",
+          "**/.env.*",
+          "**/.*env*",
+          "**/*.pem",
+          "**/*.key",
+          "**/*.p12",
+          "**/*.pfx",
+          "**/*_rsa",
+          "**/*_dsa",
+          "**/*_ed25519",
+          "**/.aws/*",
+          "**/.kube/*",
+          "**/.azure/*",
+          "**/.config/gcloud/*",
+          "/etc/*",
+          "/var/*"
+        ]
+      }
+    },
+    "exec": {
+      "denyOnly": [
+        "curl",
+        "wget",
+        "nc",
+        "ncat",
+        "netcat",
+        "telnet",
+        "nmap",
+        "ssh",
+        "scp",
+        "security",
+        "ftp"
+      ]
+    }
+  }
+}

@@ -1,0 +1,109 @@
+2026-03-18 09:44:23,786 - INFO - Starting Master Sync Process...
+2026-03-18 09:44:23,787 - INFO - --- Starting cisa_kev_sync.py ---
+2026-03-18 09:44:28,474 - INFO - --- Finished cisa_kev_sync.py successfully in 4.69s ---
+2026-03-18 09:44:28,475 - INFO - --- Starting tenable_sync.py ---
+2026-03-18 09:48:06,971 - INFO - --- Finished tenable_sync.py successfully in 218.50s ---
+2026-03-18 09:48:06,972 - INFO - --- Starting wiz_sync.py ---
+2026-03-18 09:52:20,668 - INFO - --- Finished wiz_sync.py successfully in 253.70s ---
+2026-03-18 09:52:20,668 - INFO - === Sync Summary ===
+2026-03-18 09:52:20,668 - INFO - cisa_kev_sync.py: SUCCESS
+2026-03-18 09:52:20,669 - INFO - tenable_sync.py: SUCCESS
+2026-03-18 09:52:20,669 - INFO - wiz_sync.py: SUCCESS
+2026-03-18 09:52:20,669 - INFO - Total duration: 476.88s
+2026-03-18 09:52:20,669 - INFO - ====================
+2026-03-18 20:14:03,004 - INFO - Starting Master Sync Process...
+2026-03-18 20:14:03,004 - INFO - --- Starting cisa_kev_sync.py ---
+2026-03-18 20:14:04,278 - INFO - --- Finished cisa_kev_sync.py successfully in 1.27s ---
+2026-03-18 20:14:04,279 - INFO - --- Starting tenable_sync.py ---
+2026-03-18 20:53:31,836 - INFO - --- Finished tenable_sync.py successfully in 2367.56s ---
+2026-03-18 20:53:31,836 - INFO - --- Starting wiz_sync.py ---
+2026-03-18 21:41:33,932 - INFO - Starting Master Sync Process...
+2026-03-18 21:41:33,932 - INFO - --- Starting cisa_kev_sync.py ---
+2026-03-18 21:41:34,317 - INFO - --- Finished cisa_kev_sync.py successfully in 0.38s ---
+2026-03-18 21:41:34,317 - INFO - --- Starting tenable_sync.py ---
+2026-03-18 21:41:50,225 - INFO - --- Finished tenable_sync.py successfully in 15.91s ---
+2026-03-18 21:41:50,225 - INFO - --- Starting wiz_sync.py ---
+2026-03-18 21:43:25,369 - INFO - --- Finished wiz_sync.py successfully in 95.14s ---
+2026-03-18 21:43:25,369 - INFO - === Sync Summary ===
+2026-03-18 21:43:25,369 - INFO - cisa_kev_sync.py: SUCCESS
+2026-03-18 21:43:25,369 - INFO - tenable_sync.py: SUCCESS
+2026-03-18 21:43:25,369 - INFO - wiz_sync.py: SUCCESS
+2026-03-18 21:43:25,369 - INFO - Total duration: 111.44s
+2026-03-18 21:43:25,369 - INFO - ====================
+2026-03-19 23:34:42,580 - INFO - Starting Master Sync Process...
+2026-03-19 23:34:42,580 - INFO - --- Starting cisa_kev_sync.py ---
+2026-03-19 23:34:43,587 - INFO - --- Finished cisa_kev_sync.py successfully in 1.01s ---
+2026-03-19 23:34:43,587 - INFO - --- Starting tenable_sync.py ---
+2026-03-19 23:37:54,158 - INFO - --- Finished tenable_sync.py successfully in 190.57s ---
+2026-03-19 23:37:54,158 - INFO - --- Starting wiz_sync.py ---
+2026-03-19 23:39:04,751 - INFO - --- Finished wiz_sync.py successfully in 70.59s ---
+2026-03-19 23:39:04,751 - INFO - === Sync Summary ===
+2026-03-19 23:39:04,751 - INFO - cisa_kev_sync.py: SUCCESS
+2026-03-19 23:39:04,751 - INFO - tenable_sync.py: SUCCESS
+2026-03-19 23:39:04,751 - INFO - wiz_sync.py: SUCCESS
+2026-03-19 23:39:04,751 - INFO - Total duration: 262.17s
+2026-03-19 23:39:04,751 - INFO - ====================
+2026-03-20 08:53:31,736 - INFO - Starting Master Sync Process...
+2026-03-20 08:53:31,736 - INFO - --- Starting cisa_kev_sync.py ---
+2026-03-20 08:53:31,772 - ERROR - --- Error running cisa_kev_sync.py (Failed after 0.04s) ---
+2026-03-20 08:53:31,772 - ERROR - Exit code: 1
+2026-03-20 08:53:31,772 - INFO - --- Starting tenable_sync.py ---
+2026-03-20 08:53:31,809 - ERROR - --- Error running tenable_sync.py (Failed after 0.04s) ---
+2026-03-20 08:53:31,810 - ERROR - Exit code: 1
+2026-03-20 08:53:31,810 - INFO - --- Starting wiz_sync.py ---
+2026-03-20 08:53:31,847 - ERROR - --- Error running wiz_sync.py (Failed after 0.04s) ---
+2026-03-20 08:53:31,847 - ERROR - Exit code: 1
+2026-03-20 08:53:31,847 - INFO - === Sync Summary ===
+2026-03-20 08:53:31,847 - INFO - cisa_kev_sync.py: FAILED
+2026-03-20 08:53:31,847 - INFO - tenable_sync.py: FAILED
+2026-03-20 08:53:31,847 - INFO - wiz_sync.py: FAILED
+2026-03-20 08:53:31,847 - INFO - Total duration: 0.11s
+2026-03-20 08:53:31,847 - INFO - ====================
+2026-03-20 08:53:39,501 - INFO - Starting Master Sync Process...
+2026-03-20 08:53:39,502 - INFO - --- Starting cisa_kev_sync.py ---
+2026-03-20 08:53:39,536 - ERROR - --- Error running cisa_kev_sync.py (Failed after 0.03s) ---
+2026-03-20 08:53:39,536 - ERROR - Exit code: 1
+2026-03-20 08:53:39,536 - INFO - --- Starting tenable_sync.py ---
+2026-03-20 08:53:39,573 - ERROR - --- Error running tenable_sync.py (Failed after 0.04s) ---
+2026-03-20 08:53:39,573 - ERROR - Exit code: 1
+2026-03-20 08:53:39,573 - INFO - --- Starting wiz_sync.py ---
+2026-03-20 08:53:39,610 - ERROR - --- Error running wiz_sync.py (Failed after 0.04s) ---
+2026-03-20 08:53:39,611 - ERROR - Exit code: 1
+2026-03-20 08:53:39,611 - INFO - === Sync Summary ===
+2026-03-20 08:53:39,611 - INFO - cisa_kev_sync.py: FAILED
+2026-03-20 08:53:39,611 - INFO - tenable_sync.py: FAILED
+2026-03-20 08:53:39,611 - INFO - wiz_sync.py: FAILED
+2026-03-20 08:53:39,611 - INFO - Total duration: 0.11s
+2026-03-20 08:53:39,611 - INFO - ====================
+2026-03-20 08:56:54,132 - INFO - Starting Master Sync Process...
+2026-03-20 08:56:54,132 - INFO - --- Starting cisa_kev_sync.py ---
+2026-03-20 08:56:54,740 - INFO - --- Finished cisa_kev_sync.py successfully in 0.61s ---
+2026-03-20 08:56:54,740 - INFO - --- Starting tenable_sync.py ---
+2026-03-20 08:58:33,408 - INFO - --- Finished tenable_sync.py successfully in 98.67s ---
+2026-03-20 08:58:33,409 - INFO - --- Starting tenable_asm_sync.py ---
+2026-03-20 08:59:02,910 - INFO - --- Finished tenable_asm_sync.py successfully in 29.50s ---
+2026-03-20 08:59:02,911 - INFO - --- Starting wiz_sync.py ---
+2026-03-20 08:59:17,607 - INFO - --- Finished wiz_sync.py successfully in 14.70s ---
+2026-03-20 08:59:17,622 - INFO - === Sync Summary ===
+2026-03-20 08:59:17,623 - INFO - cisa_kev_sync.py: SUCCESS
+2026-03-20 08:59:17,623 - INFO - tenable_sync.py: SUCCESS
+2026-03-20 08:59:17,623 - INFO - tenable_asm_sync.py: SUCCESS
+2026-03-20 08:59:17,623 - INFO - wiz_sync.py: SUCCESS
+2026-03-20 08:59:17,623 - INFO - Total duration: 143.49s
+2026-03-20 08:59:17,623 - INFO - ====================
+2026-03-21 00:39:53,700 - INFO - Starting Master Sync Process...
+2026-03-21 00:39:53,701 - INFO - --- Starting cisa_kev_sync.py ---
+2026-03-21 00:39:54,325 - INFO - --- Finished cisa_kev_sync.py successfully in 0.62s ---
+2026-03-21 00:39:54,326 - INFO - --- Starting tenable_sync.py ---
+2026-03-21 00:41:06,284 - INFO - --- Finished tenable_sync.py successfully in 71.96s ---
+2026-03-21 00:41:06,284 - INFO - --- Starting tenable_asm_sync.py ---
+2026-03-21 00:41:23,103 - INFO - --- Finished tenable_asm_sync.py successfully in 16.82s ---
+2026-03-21 00:41:23,103 - INFO - --- Starting wiz_sync.py ---
+2026-03-21 01:21:40,027 - INFO - --- Finished wiz_sync.py successfully in 2416.92s ---
+2026-03-21 01:21:40,027 - INFO - === Sync Summary ===
+2026-03-21 01:21:40,027 - INFO - cisa_kev_sync.py: SUCCESS
+2026-03-21 01:21:40,027 - INFO - tenable_sync.py: SUCCESS
+2026-03-21 01:21:40,027 - INFO - tenable_asm_sync.py: SUCCESS
+2026-03-21 01:21:40,027 - INFO - wiz_sync.py: SUCCESS
+2026-03-21 01:21:40,027 - INFO - Total duration: 2506.33s
+2026-03-21 01:21:40,027 - INFO - ====================
