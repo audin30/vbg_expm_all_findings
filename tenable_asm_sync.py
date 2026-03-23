@@ -121,6 +121,45 @@ def ms_to_iso(ms):
     except (ValueError, TypeError):
         return None
 
+def get_nested_value(obj, key):
+    """
+    Get value from flattened keys (e.g., 'bd.hostname') or nested structure.
+    Tries both approaches: direct key lookup and nested traversal.
+    """
+    # Try direct key lookup first (for flattened JSON responses)
+    if key in obj:
+        return obj.get(key)
+    
+    # Try nested traversal (for nested JSON responses)
+    keys = key.split('.')
+    current = obj
+    for k in keys:
+        if isinstance(current, dict):
+            current = current.get(k)
+            if current is None:
+                return None
+        else:
+            return None
+    return current
+
+def safe_int(value):
+    """Safely convert value to integer or return None."""
+    if value is None:
+        return None
+    try:
+        return int(value)
+    except (ValueError, TypeError):
+        return None
+
+def safe_float(value):
+    """Safely convert value to float or return None."""
+    if value is None:
+        return None
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        return None
+
 def fetch_and_sync_asm_assets(conn):
     logger.info("Starting Tenable ASM Assets sync...")
     task_name = "tenable_asm_assets"
@@ -189,6 +228,10 @@ def fetch_and_sync_asm_assets(conn):
 
     logger.info(f"Processing {len(assets)} ASM assets...")
     
+    # Log sample asset structure for debugging
+    if assets:
+        logger.debug(f"Sample asset structure: {json.dumps(assets[0], indent=2, default=str)[:500]}...")
+    
     records = []
     latest_update = last_sync_time
     
@@ -197,73 +240,115 @@ def fetch_and_sync_asm_assets(conn):
         asset = sanitize_data(asset)
         
         # Identify the most recent timestamp to use as cursor
-        asset_updated = asset.get('bd.last_metadata_change')
+        asset_updated = get_nested_value(asset, 'bd.last_metadata_change')
         if asset_updated and (not latest_update or asset_updated > latest_update):
             latest_update = asset_updated
-            
-        # Extract fields using correct keys (they literally contain dots)
-        hostname = asset.get('bd.hostname')
-        ip_address = asset.get('bd.ip_address')
         
-        # Port and Service from lists
-        ports = asset.get('ports.ports', [])
-        services = asset.get('ports.services', [])
-        primary_port = ports[0] if isinstance(ports, list) and ports else None
-        primary_service = services[0] if isinstance(services, list) and services else None
-        open_ports = [str(p) for p in ports] if isinstance(ports, list) else []
-        all_services = services if isinstance(services, list) else []
+        # Extract basic fields - support both flattened and nested JSON
+        asset_id = asset.get('id')
+        hostname = get_nested_value(asset, 'bd.hostname')
+        ip_address = get_nested_value(asset, 'bd.ip_address')
+        
+        if not asset_id:
+            logger.warning("Skipping asset with missing ID")
+            continue
+        
+        # Port and Service extraction from lists
+        ports = get_nested_value(asset, 'ports.ports')
+        services = get_nested_value(asset, 'ports.services')
+        
+        # Ensure ports and services are lists
+        if isinstance(ports, str):
+            try:
+                ports = json.loads(ports) if ports else []
+            except json.JSONDecodeError:
+                ports = []
+        if not isinstance(ports, list):
+            ports = []
+            
+        if isinstance(services, str):
+            try:
+                services = json.loads(services) if services else []
+            except json.JSONDecodeError:
+                services = []
+        if not isinstance(services, list):
+            services = []
+        
+        # Extract primary port (first in list) as integer
+        primary_port = None
+        if ports:
+            primary_port = safe_int(ports[0])
+        
+        primary_service = services[0] if services else None
+        
+        # Convert ports to list of strings for storage
+        open_ports = [str(p) for p in ports if p is not None]
+        all_services = [str(s) for s in services if s is not None]
 
-        # Sources join
-        sources = asset.get('bd.sources', [])
-        source_str = ", ".join(sources) if isinstance(sources, list) else str(sources)
+        # Sources/Source handling
+        sources = get_nested_value(asset, 'bd.sources')
+        if isinstance(sources, list):
+            source_str = ", ".join([str(s) for s in sources if s])
+        else:
+            source_str = str(sources) if sources else None
 
-        # Tags and technologies may be lists or dicts
-        tags = asset.get('bd.tags')
-        tech = asset.get('bd.tech')
+        # Tags and technologies - store as JSON
+        tags = get_nested_value(asset, 'bd.tags')
+        tech = get_nested_value(asset, 'bd.tech')
 
-        records.append((
-            asset.get('id'),
-            hostname,                                        # name (compat)
-            hostname,                                        # hostname
-            asset.get('bd.record_type'),                    # type
-            source_str,                                      # source
-            asset.get('bd.original'),                       # original
-            asset.get('bd.apex'),                           # apex_domain
-            json.dumps(tags) if tags is not None else None, # tags
-            json.dumps(tech) if tech is not None else None, # technologies
-            ms_to_iso(asset.get('bd.addedtoportfolio')),   # first_seen
-            asset.get('bd.last_metadata_change'),           # last_seen
-            asset.get('bd.last_metadata_change'),           # updated_at
-            ip_address,                                      # address (compat)
-            ip_address,                                      # ip_address
-            primary_port,                                    # port
-            None,                                            # protocol
-            primary_service,                                 # service
-            open_ports,                                      # open_ports
-            all_services,                                    # all_services
-            asset.get('bd.severity_ranking'),               # severity_ranking
-            asset.get('ipgeo.asn'),                         # asn
-            asset.get('ipgeo.asn_number'),                  # asn_number
-            asset.get('ipgeo.city'),                        # city
-            asset.get('ipgeo.country'),                     # country
-            asset.get('ipgeo.countrycode'),                 # country_code
-            asset.get('ipgeo.region'),                      # region
-            asset.get('ipgeo.isp'),                         # isp
-            asset.get('ipgeo.latitude'),                    # latitude
-            asset.get('ipgeo.longitude'),                   # longitude
-            asset.get('ipgeo.cloudhosted'),                 # is_cloud
-            asset.get('ipgeo.cloud'),                       # cloud_provider
-            asset.get('domaininfo.registrarname'),          # registrar
-            asset.get('domaininfo.registrant'),             # domain_registrant
-            asset.get('domaininfo.createdate'),             # domain_created_at
-            asset.get('domaininfo.expiredate'),             # domain_expires_at
-            asset.get('ssl.grade'),                         # ssl_grade
-            asset.get('ssl.certexpiry'),                    # ssl_cert_expiry
-            asset.get('http.title'),                        # http_title
-            asset.get('http.server'),                       # http_server
-            json.dumps(asset)
-        ))
+        # Extract all available fields with proper type handling
+        record = (
+            asset_id,                                            # id
+            hostname or get_nested_value(asset, 'bd.name'),     # name (fallback to bd.name)
+            hostname,                                            # hostname
+            get_nested_value(asset, 'bd.record_type'),          # type
+            source_str,                                          # source
+            get_nested_value(asset, 'bd.original'),             # original
+            get_nested_value(asset, 'bd.apex'),                 # apex_domain
+            json.dumps(tags) if tags is not None else None,     # tags
+            json.dumps(tech) if tech is not None else None,     # technologies
+            ms_to_iso(get_nested_value(asset, 'bd.addedtoportfolio')),  # first_seen
+            get_nested_value(asset, 'bd.last_metadata_change'), # last_seen
+            get_nested_value(asset, 'bd.last_metadata_change'), # updated_at
+            ip_address,                                          # address (IP address)
+            ip_address,                                          # ip_address
+            primary_port,                                        # port (INTEGER)
+            None,                                                # protocol
+            primary_service,                                     # service
+            open_ports,                                          # open_ports (TEXT array)
+            all_services,                                        # all_services (TEXT array)
+            get_nested_value(asset, 'bd.severity_ranking'),     # severity_ranking
+            get_nested_value(asset, 'ipgeo.asn'),               # asn
+            safe_int(get_nested_value(asset, 'ipgeo.asn_number')),  # asn_number (INTEGER)
+            get_nested_value(asset, 'ipgeo.city'),              # city
+            get_nested_value(asset, 'ipgeo.country'),           # country
+            get_nested_value(asset, 'ipgeo.countrycode'),       # country_code
+            get_nested_value(asset, 'ipgeo.region'),            # region
+            get_nested_value(asset, 'ipgeo.isp'),               # isp
+            safe_float(get_nested_value(asset, 'ipgeo.latitude')),   # latitude (NUMERIC)
+            safe_float(get_nested_value(asset, 'ipgeo.longitude')),  # longitude (NUMERIC)
+            get_nested_value(asset, 'ipgeo.cloudhosted'),       # is_cloud
+            get_nested_value(asset, 'ipgeo.cloud'),             # cloud_provider
+            get_nested_value(asset, 'domaininfo.registrarname'),# registrar
+            get_nested_value(asset, 'domaininfo.registrant'),   # domain_registrant
+            get_nested_value(asset, 'domaininfo.createdate'),   # domain_created_at
+            get_nested_value(asset, 'domaininfo.expiredate'),   # domain_expires_at
+            get_nested_value(asset, 'ssl.grade'),               # ssl_grade
+            get_nested_value(asset, 'ssl.certexpiry'),          # ssl_cert_expiry
+            get_nested_value(asset, 'http.title'),              # http_title
+            get_nested_value(asset, 'http.server'),             # http_server
+            json.dumps(asset)                                    # raw_data
+        )
+        records.append(record)
 
+    logger.info(f"Prepared {len(records)} records for insertion")
+    
+    # Validate record structure
+    if records:
+        expected_columns = 40  # Number of columns in tenable_asm_assets table
+        if len(records[0]) != expected_columns:
+            logger.warning(f"Record tuple has {len(records[0])} elements, expected {expected_columns}")
+    
     with conn.cursor() as cur:
         upsert_query = """
         INSERT INTO tenable_asm_assets (
@@ -317,7 +402,13 @@ def fetch_and_sync_asm_assets(conn):
             http_server = EXCLUDED.http_server,
             raw_data = EXCLUDED.raw_data;
         """
-        execute_values(cur, upsert_query, records)
+        try:
+            execute_values(cur, upsert_query, records)
+            logger.info(f"Successfully inserted/updated {len(records)} records in tenable_asm_assets table")
+        except psycopg2.Error as e:
+            logger.error(f"Failed to execute upsert: {e}")
+            logger.error(f"First record sample: {records[0] if records else 'No records'}")
+            raise
     
     if latest_update:
         save_cursor(conn, f"{task_name}_last_sync", latest_update)
